@@ -13,8 +13,87 @@
     </ion-toolbar>
   </ion-header>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+<!--  <div id="container">-->
+<!--    <strong>Ready to create an app?</strong>-->
+<!--    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>-->
+<!--    <div class="row">-->
+<!--      <div class="col-6">-->
+<!--        mira mira-->
+<!--      </div>-->
+<!--      <div class="col-6">-->
+<!--        mira mira-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+  <div *ngIf="this.loader" class="d-flex justify-content-center">
+    <div class="spinner-grow" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>
+
+  <div *ngIf="!this.loader" class="row align-items-center mt-3">
+    <form [formGroup]="form" (ngSubmit)="submit()" novalidate>
+
+      <mdb-form-control>
+        <select mdbInput formControlName="slotID" id="slotID" class="form-control mt-3" >
+          <option *ngFor="let slot of slotService.slots" [value]="slot.id">{{slot.id}} - {{slot.name}}</option>
+        </select>
+        <label mdbLabel class="form-label" for="slotID">Slot</label>
+      </mdb-form-control>
+
+      <button mdbRipple rippleColor="dark" type="button" class="btn btn-outline-primary" (click)="submit()">Envoyouille</button>
+
+      <!--  <div class="erreur">-->
+      <!--    {{erreur}}-->
+      <!--  </div>-->
+    </form>
+
+    <div class="row" *ngIf="slot">
+
+      <div class="col-12 d-flex justify-content-center mb-5">
+        <h2>Name : {{slot.name}}</h2>
+      </div>
+
+      <div class="col-12 col-md-3">
+        <h3 style="text-align: center">PayoutTable</h3>
+        <div class="d-flex justify-content-end text-center border-bottom" *ngFor="let combinaison of slot.payoutTable.combinaisons">
+          <div class="col-3" *ngFor="let symbole of combinaison.symboleOrderCombinaisons">
+            <img style="vertical-align: initial" height="96" width="115" src="{{symbole.symbole.path}}">
+          </div>
+          <div class="col-3">
+            {{combinaison.gain}}
+          </div>
+        </div>
+      </div>
+
+
+
+      <div style="max-height: 288px; overflow: hidden" class="border rouleau col-4" *ngFor="let rollOrder of slot.rollOrders; let index = index">
+        <div [id]="'roll'+index" class="flex-column justify-content-center d-flex align-items-center"  [style]="'transform : translate(0px, -'+rollOrder.position+'px)'" >
+          <div *ngFor="let test of [0,1]">
+            <div style="height: 96px" *ngFor="let symbole of rollOrder.roll.symboleOrders; let indexSymbole = index">
+              <img [id]="test+'roll'+index+'Symbole'+symbole.order" style="vertical-align: initial" height="96" width="115" src="{{symbole.symbole.path}}">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-2">
+        <!--      <button style="width: 100%; height: 100%" mdbRipple rippleColor="dark" type="button" class="btn btn-danger" (click)="animationVraiRoulette()" >JOUER TA MERE LA PUTE</button>-->
+        <button [disabled]="loaderPlay" style="width: 100%; height: 100%" mdbRipple rippleColor="dark" type="button" class="btn btn-danger" (click)="play(slot.id)" >JOUER</button>
+      </div>
+
+
+
+    </div>
+    <div class="col-12 d-flex justify-content-center align-items-center" *ngIf="resultat">
+      <div class="mr-2" *ngFor="let symbole of resultat.symboleOrders">
+        {{symbole.symbole.name}}
+      </div>
+      et le gain {{resultat.gain}}
+      <div *ngIf="resultat.symboleOrders[0].symbole.name === resultat.symboleOrders[1].symbole.name && resultat.symboleOrders[0].symbole.name === resultat.symboleOrders[2].symbole.name">
+        <h3> C LA WINN </h3>
+      </div>
+    </div>
   </div>
 </ion-content>

@@ -1,27 +1,24 @@
-#container {
+
+.h1{
+  font-size: 5rem !important;
+}
+
+
+.rouleau{
   text-align: center;
-
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
+  background: rgb(0,0,0);
+  background: linear-gradient(360deg, rgba(0,0,0,0.6194852941176471) 0%, rgba(255,255,255,0.9920343137254902) 20%, rgba(255,255,255,1) 80%, rgba(0,0,0,0.6222864145658263) 100%);
 }
 
-#container strong {
-  font-size: 20px;
-  line-height: 26px;
+.animationWin{
+
+  animation: spin 2s linear;
+
 }
 
-#container p {
-  font-size: 16px;
-  line-height: 22px;
-
-  color: #8c8c8c;
-
-  margin: 0;
-}
-
-#container a {
-  text-decoration: none;
+@keyframes spin {
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform:rotate(360deg);
+  }
 }

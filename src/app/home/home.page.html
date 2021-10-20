@@ -12,19 +12,6 @@
       <ion-title size="large">Blank</ion-title>
     </ion-toolbar>
   </ion-header>
-
-<!--  <div id="container">-->
-<!--    <strong>Ready to create an app?</strong>-->
-<!--    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>-->
-<!--    <div class="row">-->
-<!--      <div class="col-6">-->
-<!--        mira mira-->
-<!--      </div>-->
-<!--      <div class="col-6">-->
-<!--        mira mira-->
-<!--      </div>-->
-<!--    </div>-->
-<!--  </div>-->
   <div *ngIf="this.loader" class="d-flex justify-content-center">
     <div class="spinner-grow" role="status">
       <span class="sr-only">Loading...</span>
@@ -51,14 +38,18 @@
     <div class="row" *ngIf="slot">
 
       <div class="col-12 d-flex justify-content-center mb-5">
-        <h2>Name : {{slot.name}}</h2>
+        <h2 class="animated bounce infinite">Name : {{slot.name}}</h2>
       </div>
 
       <div class="col-12 col-md-3">
         <h3 style="text-align: center">PayoutTable</h3>
         <div class="d-flex justify-content-end text-center border-bottom" *ngFor="let combinaison of slot.payoutTable.combinaisons">
-          <div class="col-3" *ngFor="let symbole of combinaison.symboleOrderCombinaisons">
-            <img style="vertical-align: initial" height="96" width="115" src="{{symbole.symbole.path}}">
+
+          <div class="col-3" *ngFor="let symbole of combinaison.combinaisonImages">
+
+            <img style="vertical-align: initial" height="96" width="115" src="{{symbole.path}}">
+
+
           </div>
           <div class="col-3">
             {{combinaison.gain}}
@@ -96,4 +87,8 @@
       </div>
     </div>
   </div>
+
+
+
+
 </ion-content>

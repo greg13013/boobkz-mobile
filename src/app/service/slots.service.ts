@@ -31,19 +31,19 @@ export class SlotsService {
             reject(error);
           }
         );
-    })
+    });
   }
 
   getSlotByIdWithPayoutTable(idSlot: number){
     return new Promise((resolve, reject) => {
-      this.httpClient.get(this.baseUrl+'/api/slots/'+ idSlot +'/payout-table/combinaisons/symbole-order-combinaisons')
+      this.httpClient.get(this.baseUrl+'/api/slots/'+ idSlot +'/payout-table/combinaisons/combinaison-images')
         .subscribe(
           (response: any) => {
             // console.log('response getAllRolls : ',response);
             // this.symboleOrders = response;
 
             // console.log('symboles service : ', this.symboles);
-            this.slot = response;
+            // this.slot = response;
             resolve(response);
           },
           (error) => {
@@ -65,7 +65,7 @@ export class SlotsService {
             // this.symboleOrders = response;
 
             // console.log('symboles service : ', this.symboles);
-            this.slot = response;
+            // this.slot = response;
             resolve(response);
           },
           (error) => {

@@ -1,12 +1,12 @@
-import {Symboles} from './symboles';
+
 import {Combinaisons} from './combinaisons';
 
-export class SymboleOrderCombinaisons {
+export class CombinaisonImage {
 
   constructor(public id?: number,
               public order?: number,
-              public group?: number,
-              public symbole?: Symboles,
+              public type?: string,
+              public path?: string,
               public combinaison?: Combinaisons
 
   ) {  }

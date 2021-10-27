@@ -17,76 +17,114 @@
       <span class="sr-only">Loading...</span>
     </div>
   </div>
+  <div *ngIf="!this.loader" class="row align-items-center">
+    <form *ngIf="!slot" class="col-12" [formGroup]="form" (ngSubmit)="submit()" novalidate>
 
-  <div *ngIf="!this.loader" class="row align-items-center mt-3">
-    <form [formGroup]="form" (ngSubmit)="submit()" novalidate>
+      <label class="form-label" for="slotID">Slot</label>
+      <select mdbInput formControlName="slotID" id="slotID" class="form-control mt-3" >
 
-      <mdb-form-control>
-        <select mdbInput formControlName="slotID" id="slotID" class="form-control mt-3" >
-          <option *ngFor="let slot of slotService.slots" [value]="slot.id">{{slot.id}} - {{slot.name}}</option>
-        </select>
-        <label mdbLabel class="form-label" for="slotID">Slot</label>
-      </mdb-form-control>
+        <option *ngFor="let slot of slotService.slots" [value]="slot.id">{{slot.id}} - {{slot.name}}</option>
+      </select>
 
-      <button mdbRipple rippleColor="dark" type="button" class="btn btn-outline-primary" (click)="submit()">Envoyouille</button>
+
+      <button mdbRipple rippleColor="dark" type="submit" class="btn btn-outline-primary" >Envoyouille</button>
 
       <!--  <div class="erreur">-->
       <!--    {{erreur}}-->
       <!--  </div>-->
     </form>
 
-    <div class="row" *ngIf="slot">
+    <div class="col-12 divMachine" *ngIf="slot">
+      <div class="row">
+        <div class="col-12 d-flex justify-content-center mb-5 flex-column align-items-center">
+          <h2 class="titreLumineux animationFlash text-center">LAS VEGAS <br>{{slot.name}}</h2>
+          <h2>Nbre de partie : {{nbrePartie}}</h2>
+        </div>
 
-      <div class="col-12 d-flex justify-content-center mb-5">
-        <h2 class="animated bounce infinite">Name : {{slot.name}}</h2>
-      </div>
+        <div class="col-12">
+          <h3 style="text-align: center">PayoutTable</h3>
+        </div>
 
-      <div class="col-12 col-md-3">
-        <h3 style="text-align: center">PayoutTable</h3>
-        <div class="d-flex justify-content-end text-center border-bottom" *ngFor="let combinaison of slot.payoutTable.combinaisons">
+        <div class="col-6">
 
-          <div class="col-3" *ngFor="let symbole of combinaison.combinaisonImages">
+          <div class="divPayout d-flex justify-content-around text-center border-bottom border-dark col-sm-12" *ngFor="let combinaison of tabPayoutTable">
 
-            <img style="vertical-align: initial" height="96" width="115" src="{{symbole.path}}">
+            <div class="d-flex justify-content-center align-items-center" *ngFor="let symbole of combinaison.combinaisonImages">
+
+              <img class="img-fluid imgPayoutTable" style="vertical-align: initial" height="96"  src="{{symbole.path}}">
 
 
-          </div>
-          <div class="col-3">
-            {{combinaison.gain}}
+            </div>
+            <div class="col-3">
+              {{combinaison.gain}}
+            </div>
           </div>
         </div>
-      </div>
+
+        <div class="col-6">
+
+          <div class="divPayout d-flex justify-content-around text-center border-bottom border-dark col-sm-12" *ngFor="let combinaison of tabPayoutTable2">
+
+            <div class="d-flex justify-content-center align-items-center" *ngFor="let symbole of combinaison.combinaisonImages">
+
+              <img class="img-fluid imgPayoutTable" style="vertical-align: initial" height="96"  src="{{symbole.path}}">
 
 
+            </div>
+            <div class="col-3">
+              {{combinaison.gain}}
+            </div>
+          </div>
+        </div>
 
-      <div style="max-height: 288px; overflow: hidden" class="border rouleau col-4" *ngFor="let rollOrder of slot.rollOrders; let index = index">
-        <div [id]="'roll'+index" class="flex-column justify-content-center d-flex align-items-center"  [style]="'transform : translate(0px, -'+rollOrder.position+'px)'" >
-          <div *ngFor="let test of [0,1]">
-            <div style="height: 96px" *ngFor="let symbole of rollOrder.roll.symboleOrders; let indexSymbole = index">
-              <img [id]="test+'roll'+index+'Symbole'+symbole.order" style="vertical-align: initial" height="96" width="115" src="{{symbole.symbole.path}}">
+
+        <div id="cadreMachine" class="d-flex justify-content-center align-items-center marginMobile col-11 col-md-6 offset-md-3 mt-5 borderLumineux animationFlash">
+
+
+          <div style="max-height: 450px; overflow: hidden" class="rouleau col-4 padding0" *ngFor="let rollOrder of slot.rollOrders; let index = index">
+            <div [id]="'roll'+index" class="flex-column justify-content-center d-flex align-items-center"  [style]="'transform : translate(0px, -'+rollOrder.position+'px)'" >
+              <div style="width: 100%" *ngFor="let test of [0,1]">
+                <div style="height: 150px" *ngFor="let symbole of rollOrder.roll.symboleOrders; let indexSymbole = index">
+                  <img [id]="test+'roll'+index+'Symbole'+symbole.order" style="vertical-align: initial;" height="150" class="animated img-fluid imgRouleau" src="{{symbole.symbole.path}}">
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <div style="display: flex; flex-wrap: wrap; position: absolute;" class="col-12">
+            <span style="position: relative; top: 75px; width: 100%;" class="border border-dark "></span>
+            <span style="position: relative; bottom: 75px; width: 100%;" class="border border-dark "></span>
+          </div>
+        </div>
+        <div class="col-12 d-flex align-items-center justify-content-center mt-4 row">
+
+          <!--      <button style="width: 100%; height: 100%" mdbRipple rippleColor="dark" type="button" class="btn btn-danger" (click)="animationVraiRoulette()" >JOUER TA MERE LA PUTE</button>-->
+          <!--        <button [disabled]="loaderPlay" mdbRipple rippleColor="dark" type="button" class="mb-1 col-6 btn btn-danger btn-rounded" (click)="play(slot.id)" >Go Boobkz</button>-->
+          <button type="button" class="col-lg-3 col-5 btnAnimation mb-3" mdbBtn color="danger" mdbWavesEffect [disabled]="loaderPlay" (click)="play(slot.id, false)" >Go Boobkz</button>
+          <button type="button" class="col-lg-3 col-5 btnAnimation mb-3" mdbBtn color="danger" mdbWavesEffect [disabled]="!loaderPlay" (click)="stopPartie()" >STOP ANIMATION</button>
+          <button type="button" class="col-lg-3 col-5 btnAnimation mb-3" mdbBtn color="primary" mdbWavesEffect [disabled]="loaderPlay" (click)="partieAuto()" >AUTO</button>
+
+        </div>
+
+        <div  class="d-flex justify-content-center align-items-center col-12 col-md-6 offset-md-3" *ngIf="resultat">
+
+          <div style="max-height: 350px; overflow: scroll;" class="card">
+            <div class="card-body">
+              <h5 class="card-title">Historique des parties</h5>
+              <p class="card-text" *ngFor="let resultatPartie of historiqueResultat; let index = index">
+                Partie : {{index+1}}<br>
+                Gain : {{resultatPartie.gain}}<br>
+                Symbole :<img class="col-3 img-fluid" height="96" *ngFor="let symbole of resultatPartie.symboleOrders" src="{{symbole.symbole.path}}">
+              </p>
+
             </div>
           </div>
         </div>
       </div>
-
-      <div class="col-12 col-md-2">
-        <!--      <button style="width: 100%; height: 100%" mdbRipple rippleColor="dark" type="button" class="btn btn-danger" (click)="animationVraiRoulette()" >JOUER TA MERE LA PUTE</button>-->
-        <button [disabled]="loaderPlay" style="width: 100%; height: 100%" mdbRipple rippleColor="dark" type="button" class="btn btn-danger" (click)="play(slot.id)" >JOUER</button>
-      </div>
-
-
-
     </div>
-    <div class="col-12 d-flex justify-content-center align-items-center" *ngIf="resultat">
-      <div class="mr-2" *ngFor="let symbole of resultat.symboleOrders">
-        {{symbole.symbole.name}}
-      </div>
-      et le gain {{resultat.gain}}
-      <div *ngIf="resultat.symboleOrders[0].symbole.name === resultat.symboleOrders[1].symbole.name && resultat.symboleOrders[0].symbole.name === resultat.symboleOrders[2].symbole.name">
-        <h3> C LA WINN </h3>
-      </div>
-    </div>
+
   </div>
+
 
 
 

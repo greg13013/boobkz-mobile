@@ -6,19 +6,194 @@
 
 .rouleau{
   text-align: center;
-  background: rgb(0,0,0);
-  background: linear-gradient(360deg, rgba(0,0,0,0.6194852941176471) 0%, rgba(255,255,255,0.9920343137254902) 20%, rgba(255,255,255,1) 80%, rgba(0,0,0,0.6222864145658263) 100%);
+  background: white;
 }
 
+.divMachine{
+
+  border-radius: 1rem;
+  /* fallback for old browsers */
+  background: #a6c0fe;
+
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: -webkit-linear-gradient(to right, rgba(166, 192, 254, 0.5), rgba(246, 128, 132, 0.5));
+
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: linear-gradient(to right, rgba(166, 192, 254, 0.5), rgba(246, 128, 132, 0.5))
+}
+
+.padding0{
+  padding: 0;
+}
+.divPayout{
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+.btn-rounded{
+  border-radius: 10rem !important;
+}
 .animationWin{
 
   animation: spin 2s linear;
 
 }
 
+.imgPayoutTable{
+  height: 75px !important;
+}
+
+.imgRouleau{
+  height: 150px !important;
+}
+
+.btnAnimation , .btnAnimation:hover, .btnAnimation:focus{
+  box-shadow: 0px 14px 0px #84261a;
+
+  height: 150px;
+}
+.btnAnimation:active{
+  -webkit-box-shadow: 0px 7px 0px #84261a;
+  -moz-box-shadow: 0px 7px 0px #84261a;
+  box-shadow: 0px 7px 0px #84261a;
+  position:relative;
+  top:12px;
+  transition: all 0.2s ease-in;
+}
+
+.borderLumineux{
+  border: 5px solid #fff;
+  box-shadow: 0 0 8px #fff, inset 0 0 8px #fff, 0 0 16px #ffeb00, inset 0 0 16px #ffeb00, 0 0 32px #ffeb00, inset 0 0 32px #ffeb00;
+  padding: 1rem;
+  border-radius: 1rem;
+
+}
+
+.animationFlash{
+  animation: flashing 1.4s infinite alternate;
+}
+
+.animationFlashRouge{
+  animation: flashingRouge 1.4s infinite alternate;
+}
+
+.animationFlashVert{
+  animation: flashingVert 1.4s infinite alternate;
+}
+
+.animationFlashJaune{
+  animation: flashingJaune 1.4s infinite alternate;
+}
+
+.titreLumineux{
+  font-family: 'Monoton', cursive;
+  color: white;
+  font-size: 124px;
+  text-shadow:
+    0 0 6px rgba(202,228,225,0.92),
+    0 0 30px rgba(202,228,225,0.34),
+    0 0 12px rgba(30,132,242,0.52),
+    0 0 21px rgba(30,132,242,0.92),
+    0 0 34px rgba(30,132,242,0.78),
+    0 0 54px rgba(30,132,242,0.92);
+  border-radius: 50%;
+  border: 10px solid #c6e2ff;
+  padding: 6rem;
+}
+
+
+@keyframes flashing {
+  0%, 18%, 21%, 32%, 35%, 39%, 42%, 100% {
+    box-shadow:
+      0 0 8px #fff,
+      inset 0 0 8px #fff,
+      0 0 32px #04d9ff,
+      inset 0 0 32px #04d9ff,
+      0 0 64px #04d9ff,
+      inset 0 0 64px #04d9ff,
+      0 0 128px #04d9ff,
+      inset 0 0 128px #04d9ff;
+
+    text-shadow:
+      0 0 16px #ffd6d6,
+      0 0 16px #ffd6d6,
+      0 0 32px #ff035b,
+      0 0 64px #ff035b,
+      0 0 90px #ff035b,
+      0 0 124px #ff035b;
+
+
+  }
+  20%, 34%, 41% {
+    text-shadow: none;
+    box-shadow: none;
+  }}
+
+@keyframes flashingRouge {
+  0%, 18%, 21%, 32%, 35%, 39%, 42%, 100% {
+    box-shadow:
+      0 0 8px #fff,
+      inset 0 0 8px #fff,
+      0 0 32px #d90c0c,
+      inset 0 0 32px #d90c0c,
+      0 0 64px #d90c0c,
+      inset 0 0 64px #d90c0c,
+      0 0 128px #d90c0c,
+      inset 0 0 128px #d90c0c;
+
+  }
+  20%, 34%, 41% {
+    box-shadow: none;
+  }}
+
+@keyframes flashingVert {
+  0%, 18%, 21%, 32%, 35%, 39%, 42%, 100% {
+    box-shadow:
+      0 0 8px #fff,
+      inset 0 0 8px #fff,
+      0 0 32px #5cff04,
+      inset 0 0 32px #5cff04,
+      0 0 64px #5cff04,
+      inset 0 0 64px #5cff04,
+      0 0 128px #5cff04,
+      inset 0 0 128px #5cff04;
+  }
+  20%, 34%, 41% {
+    box-shadow: none;
+  }}
+
+@keyframes flashingJaune {
+  0%, 18%, 21%, 32%, 35%, 39%, 42%, 100% {
+    box-shadow:
+      0 0 8px #fff,
+      inset 0 0 8px #fff,
+      0 0 32px #ffdb27,
+      inset 0 0 32px #ffdb27,
+      0 0 64px #ffdb27,
+      inset 0 0 64px #ffdb27,
+      0 0 128px #ffdb27,
+      inset 0 0 128px #ffdb27;
+  }
+  20%, 34%, 41% {
+    box-shadow: none;
+  }}
+
+
 @keyframes spin {
   100% {
     -webkit-transform: rotate(360deg);
     transform:rotate(360deg);
+  }
+}
+
+@media (max-width: 900px){
+  .marginMobile{
+    margin-left: 1rem;
+  }
+  .imgPayoutTable{
+    height: auto !important;
+  }
+
+  .titreLumineux{
+    font-size: xx-large;
   }
 }

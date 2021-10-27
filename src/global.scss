@@ -24,3 +24,52 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+//Import google font name slot
+@import url('https://fonts.googleapis.com/css2?family=Monoton&display=swap');
+
+
+//CORRECTION DETAIL GREG
+:focus-visible{
+  outline: none;
+}
+
+/*Change text in autofill textbox*/
+input:-webkit-autofill
+{
+  -webkit-background-clip: text !important;
+}
+
+// correction marge
+.accordion-body{
+  padding: 0 !important;
+}
+
+// suppression ligne border top table
+.table th{
+  border-top: 0 !important;
+}
+
+.btn{
+  text-transform: none !important;
+}
+
+.btn-light:hover, .btn-light:active, .btn-light:focus{
+  background-color: transparent !important;
+}
+
+button {
+  border-radius: 2rem !important;
+}
+
+body{
+  //background-image:url("assets/img/losange_gris.jpg");
+  //background-size: 100%;
+  //overflow-y: scroll;
+
+
+}
+
+.imgHistorique{
+  max-width: 25% !important;
+}

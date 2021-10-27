@@ -1,10 +1,4 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
+
 
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
@@ -55,9 +49,9 @@
 
 
             </div>
-            <div class="col-3">
+
               {{combinaison.gain}}
-            </div>
+
           </div>
         </div>
 
@@ -71,9 +65,9 @@
 
 
             </div>
-            <div class="col-3">
+
               {{combinaison.gain}}
-            </div>
+
           </div>
         </div>
 
@@ -114,7 +108,7 @@
               <p class="card-text" *ngFor="let resultatPartie of historiqueResultat; let index = index">
                 Partie : {{index+1}}<br>
                 Gain : {{resultatPartie.gain}}<br>
-                Symbole :<img class="col-3 img-fluid" height="96" *ngFor="let symbole of resultatPartie.symboleOrders" src="{{symbole.symbole.path}}">
+                Symbole :<img class=" img-fluid col-3 imgHistorique" height="96" *ngFor="let symbole of resultatPartie.symboleOrders" src="{{symbole.symbole.path}}">
               </p>
 
             </div>

@@ -5,6 +5,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { HomePage } from './home.page';
 
 import { HomePageRoutingModule } from './home-routing.module';
+import {MDBBootstrapModule} from 'angular-bootstrap-md';
 
 
 @NgModule({
@@ -12,6 +13,7 @@ import { HomePageRoutingModule } from './home-routing.module';
     CommonModule,
     FormsModule,
     IonicModule,
+    MDBBootstrapModule.forRoot(),
     HomePageRoutingModule,
     ReactiveFormsModule,
   ],
